@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartServe - Produtos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SmartServe</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../dashboard.html" class="nav-item">Dashboard</a>
+                <a href="produtos.html" class="nav-item active">Produtos</a>
+                <a href="pedidos.html" class="nav-item">Pedidos</a>
+                <a href="configuracoes.html" class="nav-item">Configurações</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-secondary">Sair</button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Produtos</h1>
+                <button id="novoProdutoBtn" class="btn btn-primary">Novo Produto</button>
+            </header>
+            
+            <div class="filters">
+                <select id="categoriaFilter">
+                    <option value="">Todas as Categorias</option>
+                    <option value="paes">Pães</option>
+                    <option value="doces">Doces</option>
+                    <option value="salgados">Salgados</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="bolos">Bolos</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </div>
+            
+            <div id="produtosList" class="produtos-grid">
+                <p class="loading">Carregando produtos...</p>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal Produto -->
+    <div id="produtoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Novo Produto</h2>
+            <form id="produtoForm">
+                <input type="hidden" id="produtoId">
+                
+                <div class="form-group">
+                    <label for="nome">Nome *</label>
+                    <input type="text" id="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" rows="3"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="preco">Preço (R$) *</label>
+                        <input type="number" id="preco" step="0.01" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoria">Categoria *</label>
+                        <select id="categoria" required>
+                            <option value="">Selecione...</option>
+                            <option value="paes">Pães</option>
+                            <option value="doces">Doces</option>
+                            <option value="salgados">Salgados</option>
+                            <option value="bebidas">Bebidas</option>
+                            <option value="bolos">Bolos</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="imagemUrl">URL da Imagem</label>
+                    <input type="url" id="imagemUrl">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="disponivel" checked>
+                            Disponível
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="destaque">
+                            Destaque
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/produtos.js"></script>
+</body>
+</html>
